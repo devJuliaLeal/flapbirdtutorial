@@ -82,7 +82,26 @@ def draw(self, win):
     rotated_image = pygame.tranform.rotate(self.img, self.tilt)
     new_rect = rotated_image.get_rect(
         center=self.img.get_rect(topleft=(self.x, self.y)).center)
+    win.blit(rotate_image, new_rect.topleft)
 
 
-while True:
-    Bird.move()
+def get_mask(self):
+    return pygame.mask.from_surface(self.img)
+
+
+def draw_window(win, bird):
+    win.blit(BG_IMG, (0, 0))
+    bird.draw(win)
+    pygame.display.update()
+
+
+def main():
+    bird = Bird(100, 200)
+    run = True
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+        pygame.quit()
+        quit()
